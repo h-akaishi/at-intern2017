@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root 'blogs#index'
-  get 'blogs/index'
+
+  resources :blogs do
+    resources :replies, only: [:create]
+  end
 
 end

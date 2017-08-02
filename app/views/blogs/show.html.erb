@@ -1,0 +1,30 @@
+<%= link_to '戻る', root_path %>
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <%= @blog.id %>: 投稿日時: <%= @blog.created_at.strftime("%Y/%m/%d %H:%M") %>
+      | いいね:
+    </div>
+    <div class="panel-body">
+      <%= @blog.body %>
+    </div>
+</div>
+
+<%= form_for @reply, url: blog_replies_url(@blog.id) do |f| %>
+  <div class="form-group">
+    <%= f.text_area :comment, placeholder: "コメントしよう", name: "comment", autofocus:"true", class:"form-control" %>
+  </div>
+  <%= f.submit "コメントする", class:"btn btn-primary"%>
+<% end %>
+
+<% if(@comments) %>
+  <table class="table">
+  <% @comments.each do |comment| %>
+      <tr>
+        <th><%= comment.comment %> </th>
+        <th>投稿日時: <%= comment.created_at.strftime("%Y/%m/%d %H:%M") %></th>
+      </tr>
+  <% end %>
+  </table>
+<% else %>
+  コメントがありません。
+<% end %>
