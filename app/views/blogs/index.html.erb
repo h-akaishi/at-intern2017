@@ -5,6 +5,7 @@
   <%= f.submit "投稿する", class:"btn btn-primary withripple"%>
 <% end %>
 
+
 <%= paginate(@blogs) %>
 <% @blogs.each do |blog| %>
   <div class="panel panel-default">
