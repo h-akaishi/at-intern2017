@@ -15,6 +15,13 @@ class BlogsController < ApplicationController
     @reply = Reply.new
   end
 
+  def like
+    @like = Blog.find(params[:id])
+    @like.like += 1
+    @like.save
+    redirect_to :root
+  end
+
   private
   def create_params
     params.require(:blog).permit(:body)

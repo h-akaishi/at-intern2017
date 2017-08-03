@@ -13,7 +13,7 @@
       <%= blog.id %>: <%= link_to blog.body, "/blogs/#{blog.id}", method: :get %>
     </div>
     <div class="panel-body">
-      いいね: | コメント: <%= blog.replies.count %> | 投稿日時:
+      <%= link_to 'いいね', action: 'like', controller: 'blogs', id: blog.id %> : <%= blog.like %> | コメント: <%= blog.replies.count %> | 投稿日時:
       <%= blog.created_at.strftime("%Y/%m/%d %H:%M") %>
     </div>
   </div>

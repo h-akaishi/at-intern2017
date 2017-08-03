@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :blogs do
     resources :replies, only: [:create]
   end
+  get '/like', to: 'blogs#like'
 
 end
